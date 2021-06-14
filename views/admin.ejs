@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin</title>
+    </head>
+    <body>
+        <center><h1>Admin</h1></center>
+        <center><h2>Displaying deatils of all the employees</h2></center>
+        <table>
+            <colgroup span="5" class="columns"></colgroup>
+            <tr>
+                <th>Name</th>
+                <th>DOB</th>
+                <th>Contact</th>
+                <th>E-mail</th>
+                <th>Address</th>
+                <th>Password</th>
+            </tr>
+            <% for (int i = 0; i<subs.length; i++) { %>
+            <tr>
+                <td><%= subs[i].username</td>
+                <td><%= subs[i].date</td>
+                <td><%= subs[i].phone</td>
+                <td><%= subs[i].mail</td>
+                <td><%= subs[i].address</td>
+                <td><%= subs[i].pwd</td>
+            </tr>
+            <% } %>
+        </table>
+    </body>
+</html>

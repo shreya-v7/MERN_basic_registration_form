@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>User Registration Form</title>
+        <link rel="stylesheet" href="style.css">
+        <meta charset="utf-8">
+        <style>
+            *{
+                margin: 0px;
+                padding: 0;
+                overflow-x: hidden;
+            }
+
+            body{
+                font-family: sans-serif;
+                background-image: linear-gradient(to right, rgb(4, 4, 54),white,pink,rgb(4, 4, 68));
+            }
+
+            .heading{
+                font-size: 18px;
+                justify-content: center;
+                width: 100%;
+                margin: 20px;
+            }
+
+            .register-form{
+                background-color: rgba(0, 0, 0, 0.658);
+                width: fit-content;
+                border-radius: 40px;
+                align-content: center;
+                justify-content: center;
+                justify-items: center;
+                padding: 10px;
+                color: rgb(196, 229, 245);
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .register-form table{
+                padding: 40px;
+            }
+
+            .register-form table td{
+                padding: 10px;
+            }
+
+            .register-form table input{
+                padding: 7px;
+                width: 190px;
+                border: none;
+                border-bottom: 1px solid rgb(243, 243, 235);
+                background: none;
+                color: wheat;
+                font-size: 16px;
+            }
+
+            .register-form table input:hover{
+                padding: 7px;
+                width: 190px;
+                border: none;
+                border-bottom: 1px solid rgb(248, 57, 10);
+                transition: 0.5s ease-in-out;
+            }
+
+            .register-form table textarea{
+                padding: 7px;
+                width: 190px;
+                border: none;
+                border-bottom: 1px solid rgb(243, 243, 235);
+                background: none;
+                color: wheat;
+                font-size: 16px;
+            }
+
+            .register-form table textarea:hover{
+                padding: 7px;
+                width: 190px;
+                border: none;
+                border-bottom: 1px solid rgb(248, 57, 10);
+                transition: 0.5s ease-in-out;
+            }
+
+            .register-form table select{
+                padding: 7px;
+                background: none;
+                color: wheat;
+            }
+
+            .register-form table option{
+                padding: 7px;
+                background: none;
+                color: rgb(3, 3, 3);
+            }
+
+            .register-form input[type="submit"]{
+                padding: 7px;
+                font-size: 18px;
+                margin-bottom: 20px;
+                background-color: teal;
+                color: white;
+                width: 200px;
+                border-radius: 20px;
+            }
+
+            .register-form input[type="submit"]:hover{
+                padding: 7px;
+                font-size: 18px;
+                margin-bottom: 20px;
+                background-color: white;
+                color: teal;
+                width: 200px;
+                transition: 0.5s ease-in-out;
+                border-radius: 20px;
+            }
+        </style>
+        <script>
+            function validate() {
+                var name = document.forms["register"]["username"].value;
+                if (name == "") {
+                alert("Please fill out Name field");
+                return false;
+                }
+
+                var phone = document.forms["register"]["contact"].value;
+                var correct_phone = /^\d{10}$/;
+                if (phone.length < 10 || phone.length > 10){
+                    alert("Please enter correct Phone")
+                    return false;
+                }
+                else{
+                    return true;
+                }
+
+                var pwd = document.forms["register"]["password"].value;
+                if (pwd.length < 6){
+                    alert("Please enter password > 6 letter or symbols");
+                    return false;
+                }
+                else{
+                    return true;
+                }
+
+                var email=document.forms["register"]["email"].value;  
+                var atposition=email.indexOf("@");  
+                var dotposition=email.lastIndexOf(".");  
+                if (atposition<1 || dotposition<atposition+2 || dotposition+2>=email.length){  
+                    alert("Please enter a valid e-mail address \n atpostion:"+atposition+"\n dotposition:"+dotposition);  
+                    return false;  
+                }  
+
+                var control_user_admin = document.getElementById("type").value;
+                if (control_user_admin == 'User')
+                    window.onload.href='user.html';
+                else    
+                    window.onload.href='admin.html';
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="heading">
+                <center><h1>User Registration Form</h1></center>
+            </div>
+            <center><div class="register-form">
+                <form class="register-form-user" action="/userconfirm" method="POST" name="register" onsubmit="return validate()">
+                <table>
+                    <tr>
+                        <td>Name: </td>
+                        <td><input type="text" name="username" placeholder="Your name"></td>
+                    </tr>
+                    <tr>
+                        <td>DOB: </td>
+                        <td><input type="date" placeholder="Your DOB" name="dob" required></td>
+                    </tr>
+                    <tr>
+                        <td>Contact: </td>
+                        <td><input type="number" placeholder="Your Phone" name="contact"></td>
+                    </tr>
+                    <tr>
+                        <td>Email: </td>
+                        <td><input type="email" placeholder="Your Email" name="email" required></td>
+                    </tr>
+                    <tr>
+                        <td>Address: </td>
+                        <td><textarea placeholder="Your Address" required></textarea></td>
+                    </tr>
+                    <tr>
+                        <td>Type: </td>                        
+                        <td><select id="type">
+                            <option value="choose" name="type">----Select----</option>
+                            <option value="user">User</option>
+                            <option value="admin">Admin</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                        <td>Password: </td>
+                        <td><input type="password" name="password" required></td>
+                    </tr>
+                </table>
+                <input type="submit" value="Submit">
+                </form>
+            </div></center>
+        </div>
+    </body>
+</html>
