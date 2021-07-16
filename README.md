@@ -1,3 +1,3 @@
 # MERN_basic_registration_form
-Intall node modules
+Install node modules
 <start app with : node app.js>
