@@ -19,7 +19,7 @@ app.get('/user', (req, res) => {
     res.render("user", { currentUser: req.user });
 });
 
-mongoose.connect("mongodb://localhost:27017/shreya",{useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb<url>",{useNewUrlParser: true, useUnifiedTopology: true});
 
 const userSchema = new mongoose.Schema({
     name: String,
